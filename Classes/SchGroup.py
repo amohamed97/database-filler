@@ -4,8 +4,7 @@ class SchGroup:
         self.tutorials = []
         self.labs = []
         self.number = None
-        self.daysTaken = set()
-        self.available = True
+        self.courseTerm = ''
 
     def setLecture(self, lecture):
         self.lecture = lecture
