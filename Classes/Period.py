@@ -6,10 +6,10 @@ class Period:
         self.instName = ''
         self.courseName = ''
         self.place = ''
-        self.type = 0
+        self.type = ''
         self.time = Time()
-        self.length = 0
-        self.groupNum = 0
+        self.length = ''
+        self.groupNum = ''
         self.periodType = ''
 
     def printMe(self):
