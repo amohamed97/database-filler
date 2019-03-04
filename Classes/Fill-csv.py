@@ -1,9 +1,11 @@
+import os
+
 from Classes.Lab import Lab
 from Classes.Lecture import Lecture
 from Classes.SchGroup import SchGroup
 import pyautogui
 from Classes.Tutorial import Tutorial
-import msvcrt
+# import msvcrt
 
 groups = []
 inp = ''
@@ -688,7 +690,10 @@ def filling():
 
 def writeFile():
     empty = ",,,,,,,"
-    f = open('D:/python/django/Database-Filler/Database.csv', 'w')
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    fpath = os.path.join(BASE_DIR,'Database.csv')
+    f = open(fpath,'w')
+
     f.write("id,TERM_NUM,NUM,LEC_INST_NAME,LEC_CRS_NAME,LEC_PLACE,LEC_TYPE,LEC_DAY,LEC_FROM,LEC_TO,LEC_PER_TYPE,"
             "TUT1_INST_NAME,"
             "TUT1_CRS_NAME,TUT1_PLACE,TUT1_TYPE,TUT1_DAY,TUT1_FROM,TUT1_TO,TUT1_PER_TYPE,TUT2_INST_NAME,TUT2_CRS_NAME,"
