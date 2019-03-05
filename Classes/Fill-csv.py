@@ -686,6 +686,7 @@ def filling():
                     break
                 group.add_lab(lab)
         groups.append(group)
+        writeFile()
 
 
 def writeFile():
@@ -756,6 +757,5 @@ if __name__ == '__main__':
     print("بسم الله الرحمن الرحيم")
     print("Welcome to Database Filler Application. Let's start the journey")
     filling()
-    writeFile()
     print("Information saved to the file successfully")
     print("Congratulations")
