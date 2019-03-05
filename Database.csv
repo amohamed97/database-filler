@@ -1,0 +1,13 @@
+Term_NUM,Credit_Hours,NUM,LEC_INST_NAME,LEC_CRS_NAME,LEC_PLACE,LEC_TYPE,LEC_DAY,LEC_FROM,LEC_TO,Lec_Ex_Day,Lec_Ex_From,Lec_Ex_To,LEC_PER_TYPE,TUT1_INST_NAME,TUT1_CRS_NAME,TUT1_PLACE,TUT1_TYPE,TUT1_DAY,TUT1_FROM,TUT1_TO,TUT1_PER_TYPE,TUT2_INST_NAME,TUT2_CRS_NAME,TUT2_PLACE,TUT2_TYPE,TUT2_DAY,TUT2_FROM,TUT2_TO,TUT2_PER_TYPE,LAB1_INST_NAME,LAB1_CRS_NAME,LAB1_PLACE,LAB1_TYPE,LAB1_DAY,LAB1_FROM,LAB1_TO,LAB1_PER_TYPE,LAB2_INST_NAME,LAB2_CRS_NAME,LAB2_PLACE,LAB2_TYPE,LAB2_DAY,LAB2_FROM,LAB2_TO,LAB2_PER_TYPE
+6,4,4,Amr El Masry,Data Structure 2,a;dflkj,1,3,4,5,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,4,4,Layla,Programming 2,;adlfj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+6,3,1,;aslfkj,Circuits 2,a;fl,2,3,4,5,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,1,3,afd;slkj,Ethics,;ljk,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,None,5,afd;slkj,ahmed,asdf,2,3,4,5,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,4,2,jkjl,Programming 0,lj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,2,5,Ahmed Fawzy,;lkj,a;dflk,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,2,1,4,a;sfldj,as;fdlj,2,1,2,3,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,2,5,4,a;sfldj,;lfdaj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+8,1,4,a;sdlfkj,kkkkkkkkkk,lkj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+10,2,2,al;fdkj,;asdlkfj,1l;kj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+10,4,3,al;fdkj,xxxxxxxxxxx,a;dfslkj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

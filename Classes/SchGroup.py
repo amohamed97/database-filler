@@ -4,7 +4,11 @@ class SchGroup:
         self.tutorials = []
         self.labs = []
         self.number = None
-        self.courseTerm = 0
+        self.courseTerm = None
+        self.lecExDay = ''
+        self.lecExFrom = ''
+        self.lecExTo = ''
+        self.creditHours = None
 
     def setLecture(self, lecture):
         self.lecture = lecture

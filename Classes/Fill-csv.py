@@ -5,6 +5,8 @@ from Classes.Lecture import Lecture
 from Classes.SchGroup import SchGroup
 import pyautogui
 from Classes.Tutorial import Tutorial
+import fileinput
+
 # import msvcrt
 
 groups = []
@@ -12,7 +14,10 @@ inp = ''
 courseName = ''
 courseTerm = ''
 instructorName = ''
+creditHours = 0
 finish = False
+change = False
+linetoChange = 0
 
 
 def createTut(tut, group):
@@ -79,8 +84,8 @@ def createLab(lab, group):
     return False
 
 
-def modifyGroup(group):
-    global inp
+def modifyGroup(group, savedGroup=None):
+    global inp, change, linetoChange
     print("1.Group Number      2.Group Lecture      3.Group Tutorials      4.Group Labs      (b).Back")
     inp = input("Which property? ")
     if inp == '1':
@@ -95,20 +100,25 @@ def modifyGroup(group):
             inp = input("(n->No change & b->Back) New Group Number:(1--->6) ")
         if inp == 'b':
             clear()
-            return modifyGroup(group)
+            return modifyGroup(group, savedGroup)
         if inp != 'n':
             group.number = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
     elif inp == '2':
         clear()
-        lectureMenu(group)
+        lectureMenu(group, savedGroup)
     elif inp == '3':
         clear()
-        tutorialsMenu(group)
+        tutorialsMenu(group, savedGroup)
     elif inp == '4':
         clear()
-        labsMenu(group)
+        labsMenu(group, savedGroup)
     elif inp == 'b':
         clear()
+        if savedGroup is not None:
+            return viewGroups(savedGroup)
         return
     else:
         clear()
@@ -117,13 +127,26 @@ def modifyGroup(group):
 
 
 def check(group, leftBound, rightBound):
-    global inp, courseName, courseTerm, instructorName
+    global inp, courseName, courseTerm, instructorName, creditHours
     if inp == "1a":
         print("Course Name: {}".format(courseName), end='   ---->   ')
         inp = input("(n->No change & b->Back) New Course's Name: ")
+        if inp == 'b':
+            return True
+        if inp != 'n':
+            courseName = inp
+        print("Credit Hours: {}".format(creditHours), end='   ---->   ')
+        inp = input("(n->No change & b->Back) New Credit Hours:(1--->4) ")
+        while isValidModifying(0, 5) != 'v':
+            if inp == 'b':
+                print("Invalid number ---> Input must satisfy boundaries")
+            elif inp == 'i':
+                print("Invalid input")
+            print("Credit Hours: {}".format(creditHours), end='   ---->   ')
+            inp = input("(n->No change & b->Back) New Credit Hours:(1--->4) ")
         if inp == 'b' or inp == 'n':
             return True
-        courseName = inp
+        creditHours = int(inp)
         return True
     elif inp == "2a":
         print("Course Term: {}".format(courseTerm), end='   ---->   ')
@@ -149,6 +172,7 @@ def check(group, leftBound, rightBound):
     elif inp == "5m":
         if len(groups) == 0:
             return 3
+        clear()
         viewGroups()
         return True
     elif inp == "4m":
@@ -210,17 +234,21 @@ def checkInp(group, inputString, leftBound=None, rightBound=None):
 
 
 def mainMenu():
-    print('1. Modify Course Name -----------> 1a')
-    print('2. Modify Course Term -----------> 2a')
-    print('3. Modify Instructor Name -------> 3a')
-    print("4. Modify Group Info-------------> 4m")
-    print("5. Modify last groups------------> 5m")
-    print('6. Finish -----------------------> finish')
-    print("Information of group number {}:".format(len(groups) + 1))
+    global change
+    print('(1a) Modify Course Name and Credit Hours', end='     ')
+    print('(2a) Modify Course Term', end='     ')
+    print('(3a) Modify Instructor Name', end='     ')
+    print("(4m) Modify Group Info", end='     ')
+    print("(5m) Modify last groups", end='     ')
+    print('(finish) Finish')
+    print("Information of group number {}:\n".format(len(groups) + 1))
+    if change:
+        change = False
+        writeFile()
 
 
 def lastGroupsMenu(i):
-    global inp
+    global inp, change, linetoChange
     print("1. Modify Course Name      2. Modify Course Term      "
           "3. Modify Instructor Name      4. Modify Other Group Info      (b)Back")
     inp = input("Which one? ")
@@ -232,6 +260,24 @@ def lastGroupsMenu(i):
             return viewGroups(i)
         if inp != 'n':
             groups[i - 1].lecture.courseName = inp
+            change = True
+            linetoChange = i
+        print("Credit Hours: {}".format(groups[i - 1].creditHours), end='   ---->   ')
+        inp = input("(n->No change & b->Back) New Credit Hours:(1--->4) ")
+        while isValidModifying(0, 5) != 'v':
+            if inp == 'b':
+                print("Invalid number ---> Input must satisfy boundaries")
+            elif inp == 'i':
+                print("Invalid input")
+            print("Credit Hours: {}".format(groups[i - 1].creditHours), end='   ---->   ')
+            inp = input("(n->No change & b->Back) New Credit Hours:(1--->4) ")
+        if inp == 'b':
+            clear()
+            return viewGroups(i)
+        if inp != 'n':
+            groups[i - 1].creditHours = int(inp)
+            change = True
+            linetoChange = i
     elif inp == '2':
         print("Course Term: {}".format(groups[i - 1].courseTerm), end='   ---->   ')
         inp = input("(n->No change & b->Back) New Course's Term: ")
@@ -247,6 +293,8 @@ def lastGroupsMenu(i):
             return viewGroups(i)
         if inp != 'n':
             groups[i - 1].courseTerm = int(inp)
+            change = True
+            linetoChange = i
     elif inp == '3':
         print("Instructor Name: {}".format(groups[i - 1].lecture.instName), end='   ---->   ')
         inp = input("(n->No change & b->Back) New Instructor's Name: ")
@@ -255,21 +303,25 @@ def lastGroupsMenu(i):
             return viewGroups(i)
         if inp != 'n':
             groups[i - 1].lecture.instName = inp
+            change = True
+            linetoChange = i
     elif inp == '4':
         clear()
-        return modifyGroup(groups[i - 1])
+        return modifyGroup(groups[i - 1], i)
     elif inp == 'b':
+        clear()
         return viewGroups()
     else:
+        clear()
         print("Invalid input ---> (1, 2, 3, 4, 5, b)")
         return lastGroupsMenu(i)
 
 
-def tutorialsMenu(group):
-    global inp
+def tutorialsMenu(group, savedGroup=None):
+    global inp, change , linetoChange
     if len(group.tutorials) == 0:
         print("No tutorials in this group")
-        return modifyGroup(group)
+        return modifyGroup(group, savedGroup)
     else:
         print("(b)Back")
         for i in range(len(group.tutorials)):
@@ -289,16 +341,19 @@ def tutorialsMenu(group):
                 inp = input("Which Tutorial? (1 Or 2) ")
             if inp == 'b':
                 clear()
-                return modifyGroup(group)
+                return modifyGroup(group, savedGroup)
             i = int(inp)
         inp = input("Which property? ")
         if inp == '1':
             inp = input("(n->No change & b->Back) New Tutorial's Place: ")
             if inp == 'b':
                 clear()
-                return tutorialsMenu(group)
+                return tutorialsMenu(group, savedGroup)
             if inp != 'n':
                 group.tutorials[i - 1].place = inp
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '2':
             inp = input("(n->No change & b->Back) New Tutorial's Type:(1 Or 2) ")
             while isValidModifying(0, 3) != 'v':
@@ -310,9 +365,12 @@ def tutorialsMenu(group):
                 inp = input("(n->No change & b->Back) New Tutorial's Type:(1 Or 2) ")
             if inp == 'b':
                 clear()
-                return tutorialsMenu(group)
+                return tutorialsMenu(group, savedGroup)
             if inp != 'n':
                 group.tutorials[i - 1].type = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '3':
             inp = input("(n->No change & b->Back) New Tutorial's Day:(0--->5) ")
             while isValidModifying(-1, 6) != 'v':
@@ -324,9 +382,12 @@ def tutorialsMenu(group):
                 inp = input("(n->No change & b->Back) New Tutorial's Day:(0--->5) ")
             if inp == 'b':
                 clear()
-                return tutorialsMenu(group)
+                return tutorialsMenu(group, savedGroup)
             if inp != 'n':
                 group.tutorials[i - 1].time.day = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '4':
             inp = input("(n->No change & b->Back) New Tutorial's From:(0--->11) ")
             while isValidModifying(-1, 12) != 'v':
@@ -338,9 +399,12 @@ def tutorialsMenu(group):
                 inp = input("(n->No change & b->Back) New Tutorial's From:(0--->11) ")
             if inp == 'b':
                 clear()
-                return tutorialsMenu(group)
+                return tutorialsMenu(group, savedGroup)
             if inp != 'n':
                 group.tutorials[i - 1].time.fr = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '5':
             inp = input("(n->No change & b->Back) New Tutorial's To:(0--->11) ")
             while isValidModifying(-1, 12) != 'v':
@@ -352,22 +416,25 @@ def tutorialsMenu(group):
                 inp = input("(n->No change & b->Back) New Tutorial's To:(0--->11) ")
             if inp == 'b':
                 clear()
-                return tutorialsMenu(group)
+                return tutorialsMenu(group, savedGroup)
             if inp != 'n':
                 group.tutorials[i - 1].time.to = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == 'b':
             clear()
-            return modifyGroup(group)
+            return modifyGroup(group, savedGroup)
         else:
             print("Invalid input ---> (1, 2, 3, 4, 5, b)")
-            return tutorialsMenu(group)
+            return tutorialsMenu(group, savedGroup)
 
 
-def labsMenu(group):
-    global inp
+def labsMenu(group, savedGroup=None):
+    global inp, change, linetoChange
     if len(group.labs) == 0:
         print("No labs in this group")
-        return modifyGroup(group)
+        return modifyGroup(group, savedGroup)
     else:
         print("(b)Back")
         for i in range(len(group.labs)):
@@ -387,16 +454,19 @@ def labsMenu(group):
                 inp = input("Which Lab? (1 Or 2) ")
             if inp == 'b':
                 clear()
-                return modifyGroup(group)
+                return modifyGroup(group, savedGroup)
             i = int(inp)
         inp = input("Which property? ")
         if inp == '1':
             inp = input("(n->No change & b->Back) New Lab's Place: ")
             if inp == 'b':
                 clear()
-                return labsMenu(group)
+                return labsMenu(group, savedGroup)
             if inp != 'n':
                 group.labs[i - 1].place = inp
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '2':
             inp = input("(n->No change & b->Back) New Lab's Type:(1 Or 2) ")
             while isValidModifying(0, 3) != 'v':
@@ -408,9 +478,12 @@ def labsMenu(group):
                 inp = input("(n->No change & b->Back) New Lab's Type:(1 Or 2) ")
             if inp == 'b':
                 clear()
-                return labsMenu(group)
+                return labsMenu(group, savedGroup)
             if inp != 'n':
                 group.labs[i - 1].type = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '3':
             inp = input("(n->No change & b->Back) New Lab's Day:(0--->5) ")
             while isValidModifying(-1, 6) != 'v':
@@ -422,9 +495,12 @@ def labsMenu(group):
                 inp = input("(n->No change & b->Back) New Lab's Day:(0--->5) ")
             if inp == 'b':
                 clear()
-                return labsMenu(group)
+                return labsMenu(group, savedGroup)
             if inp != 'n':
                 group.labs[i - 1].time.day = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '4':
             inp = input("(n->No change & b->Back) New Lab's From:(0--->11) ")
             while isValidModifying(-1, 12) != 'v':
@@ -436,9 +512,12 @@ def labsMenu(group):
                 inp = input("(n->No change & b->Back) New Lab's From:(0--->11) ")
             if inp == 'b':
                 clear()
-                return labsMenu(group)
+                return labsMenu(group, savedGroup)
             if inp != 'n':
                 group.labs[i - 1].time.fr = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == '5':
             inp = input("(n->No change & b->Back) New Lab's To:(0--->11) ")
             while isValidModifying(-1, 12) != 'v':
@@ -450,15 +529,18 @@ def labsMenu(group):
                 inp = input("(n->No change & b->Back) New Lab's To:(0--->11) ")
             if inp == 'b':
                 clear()
-                return labsMenu(group)
+                return labsMenu(group, savedGroup)
             if inp != 'n':
                 group.labs[i - 1].time.to = int(inp)
+                if savedGroup is not None:
+                    change = True
+                    linetoChange = savedGroup
         elif inp == 'b':
             clear()
-            return modifyGroup(group)
+            return modifyGroup(group, savedGroup)
         else:
             print("Invalid input ---> (1, 2, 3, 4, 5, b)")
-            return labsMenu(group)
+            return labsMenu(group, savedGroup)
 
 
 def isValidFilling(leftBound, rightBound):
@@ -498,22 +580,31 @@ def isValidModifying(leftBound, rightBound, n=True):
             inp = 'i'  # invalid input
 
 
-def lectureMenu(group):
-    global inp
+def lectureMenu(group, savedGroup=None):
+    global inp, change, linetoChange
+    warningString = "Invalid input ---> (1, 2, 3, 4, 5, b)"
     print("(b)Back")
     print("1.Lecture Place: {}".format(group.lecture.place), end="      ")
     print("2.Lecture Type: {}".format(group.lecture.type), end="      ")
     print("3.Lecture Day: {}".format(group.lecture.time.day), end="      ")
     print("4.Lecture From: {}".format(group.lecture.time.fr), end="      ")
     print("5.Lecture To: {}".format(group.lecture.time.to))
+    if group.lecExDay != '':
+        warningString = "Invalid input ---> (1, 2, 3, 4, 5, 6, 7, 8, b)"
+        print("6.Lecture Extension Day: {}".format(group.lecExDay), end='      ')
+        print("7.Lecture Extension From: {}".format(group.lecExFrom), end='      ')
+        print("8.Lecture Extension To: {}".format(group.lecExTo))
     inp = input("Which property? ")
     if inp == '1':
         inp = input("(n->No change & b->Back) New Lecture's Place: ")
         if inp == 'b':
             clear()
-            return lectureMenu(group)
+            return lectureMenu(group, savedGroup)
         if inp != 'n':
             group.lecture.place = inp
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
     elif inp == '2':
         inp = input("(n->No change & b->Back) New Lecture's Type:(1 Or 2) ")
         while isValidModifying(0, 3) != 'v':
@@ -525,9 +616,12 @@ def lectureMenu(group):
             inp = input("(n->No change & b->Back) New Lecture's Type:(1 Or 2) ")
         if inp == 'b':
             clear()
-            return lectureMenu(group)
+            return lectureMenu(group, savedGroup)
         if inp != 'n':
             group.lecture.type = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
     elif inp == '3':
         inp = input("(n->No change & b->Back) New Lecture's Day:(0--->5) ")
         while isValidModifying(-1, 6) != 'v':
@@ -539,9 +633,12 @@ def lectureMenu(group):
             inp = input("(n->No change & b->Back) New Lecture's Day:(0--->5) ")
         if inp == 'b':
             clear()
-            return lectureMenu(group)
+            return lectureMenu(group, savedGroup)
         if inp != 'n':
             group.lecture.time.day = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
     elif inp == '4':
         inp = input("(n->No change & b->Back) New Lecture's From:(0--->11) ")
         while isValidModifying(-1, 12) != 'v':
@@ -553,9 +650,12 @@ def lectureMenu(group):
             inp = input("(n->No change & b->Back) New Lecture's From:(0--->11) ")
         if inp == 'b':
             clear()
-            return lectureMenu(group)
+            return lectureMenu(group, savedGroup)
         if inp != 'n':
             group.lecture.time.fr = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
     elif inp == '5':
         inp = input("(n->No change & b->Back) New Lecture's To:(0--->11) ")
         while isValidModifying(-1, 12) != 'v':
@@ -567,15 +667,70 @@ def lectureMenu(group):
             inp = input("(n->No change & b->Back) New Lecture's To:(0--->11) ")
         if inp == 'b':
             clear()
-            return lectureMenu(group)
+            return lectureMenu(group, savedGroup)
         if inp != 'n':
             group.lecture.time.to = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
     elif inp == 'b':
         clear()
-        return modifyGroup(group)
+        return modifyGroup(group, savedGroup)
+    elif group.lecExDay != '' and inp == '6':
+        inp = input("(n->No change & b->Back) New Lecture's Extension Day:(0--->5) ")
+        while isValidModifying(-1, 6) != 'v':
+            if inp == 'b':
+                print("Invalid number ---> Input must satisfy boundaries")
+            elif inp == 'i':
+                print("Invalid input")
+            print("Lecture Day: {}".format(group.lecExDay), end='   ---->   ')
+            inp = input("(n->No change & b->Back) New Lecture's Extension Day:(0--->5) ")
+        if inp == 'b':
+            clear()
+            return lectureMenu(group, savedGroup)
+        if inp != 'n':
+            group.lecExDay = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
+    elif group.lecExDay != '' and inp == '7':
+        inp = input("(n->No change & b->Back) New Lecture's Extension From:(0--->11) ")
+        while isValidModifying(-1, 12) != 'v':
+            if inp == 'b':
+                print("Invalid number ---> Input must satisfy boundaries")
+            elif inp == 'i':
+                print("Invalid input")
+            print("Lecture From: {}".format(group.lecExFrom), end='   ---->   ')
+            inp = input("(n->No change & b->Back) New Lecture's Extension From:(0--->11) ")
+        if inp == 'b':
+            clear()
+            return lectureMenu(group, savedGroup)
+        if inp != 'n':
+            group.lecExFrom = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
+    elif group.lecExDay != '' and inp == '8':
+        inp = input("(n->No change & b->Back) New Lecture's Extension To:(0--->11) ")
+        while isValidModifying(-1, 12) != 'v':
+            if inp == 'b':
+                print("Invalid number ---> Input must satisfy boundaries")
+            elif inp == 'i':
+                print("Invalid input")
+            print("Lecture To: {}".format(group.lecExTo), end='   ---->   ')
+            inp = input("(n->No change & b->Back) New Lecture's Extension To:(0--->11) ")
+        if inp == 'b':
+            clear()
+            return lectureMenu(group, savedGroup)
+        if inp != 'n':
+            group.lecExTo = int(inp)
+            if savedGroup is not None:
+                change = True
+                linetoChange = savedGroup
     else:
-        print("Invalid input ---> (1, 2, 3, 4, 5, b)")
-        return lectureMenu(group)
+        clear()
+        print(warningString)
+        return lectureMenu(group, savedGroup)
 
 
 def clear():
@@ -583,7 +738,7 @@ def clear():
 
 
 def filling():
-    global courseName, courseTerm, instructorName, inp, finish
+    global courseName, courseTerm, instructorName, inp, finish, creditHours
     first = True
     while True:
         group = SchGroup()
@@ -601,6 +756,11 @@ def filling():
             courseName = inp
             clear()
             mainMenu()
+            if checkInp(group, "Credit Hours:(1--->4) ", 0, 5):
+                break
+            creditHours = int(inp)
+            clear()
+            mainMenu()
             if checkInp(group, "Instructor Name: "):
                 break
             instructorName = inp
@@ -611,6 +771,7 @@ def filling():
             break
         group.number = int(inp)
         group.courseTerm = courseTerm
+        group.creditHours = creditHours
         lecture.groupNum = group.number
         lecture.periodType = 'Lecture'
         lecture.courseName = courseName
@@ -640,6 +801,26 @@ def filling():
         if checkInp(group, "Lec To:(0--->11) ", -1, 12):
             break
         lecture.time.to = int(inp)
+        clear()
+        mainMenu()
+        if checkInp(group, "Have Lecture Extension? (yes Or no) ", 'yes', 'no'):
+            break
+        if inp == "yes":
+            clear()
+            mainMenu()
+            if checkInp(group, "Lec Extension Day:(0--->5) ", -1, 6):
+                break
+            group.lecExDay = int(inp)
+            clear()
+            mainMenu()
+            if checkInp(group, "Lec Extension From:(0--->11) ", -1, 12):
+                break
+            group.lecExFrom = int(inp)
+            clear()
+            mainMenu()
+            if checkInp(group, "Lec Extension From:(0--->11) ", -1, 12):
+                break
+            group.lecExTo = int(inp)
         clear()
         mainMenu()
         if checkInp(group, "Have Tutorial? (yes Or no) ", 'yes', 'no'):
@@ -686,55 +867,51 @@ def filling():
                     break
                 group.add_lab(lab)
         groups.append(group)
-        writeFile()
+        writeFile(group)
 
 
-def writeFile():
-    empty = ",,,,,,,"
+def writeFile(group=None):
+    global linetoChange
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    fpath = os.path.join(BASE_DIR,'Database.csv')
-    f = open(fpath,'w')
-
-    f.write("id,TERM_NUM,NUM,LEC_INST_NAME,LEC_CRS_NAME,LEC_PLACE,LEC_TYPE,LEC_DAY,LEC_FROM,LEC_TO,LEC_PER_TYPE,"
-            "TUT1_INST_NAME,"
-            "TUT1_CRS_NAME,TUT1_PLACE,TUT1_TYPE,TUT1_DAY,TUT1_FROM,TUT1_TO,TUT1_PER_TYPE,TUT2_INST_NAME,TUT2_CRS_NAME,"
-            "TUT2_PLACE,TUT2_TYPE,TUT2_DAY,TUT2_FROM,TUT2_TO,TUT2_PER_TYPE,LAB1_INST_NAME,LAB1_CRS_NAME,LAB1_PLACE,"
-            "LAB1_TYPE,LAB1_DAY,LAB1_FROM,LAB1_TO,LAB1_PER_TYPE,LAB2_INST_NAME,LAB2_CRS_NAME,LAB2_PLACE,LAB2_TYPE,"
-            "LAB2_DAY,LAB2_FROM,LAB2_TO,LAB2_PER_TYPE\n")
-    for i in range(len(groups)):
-        f.write('{},{},{},'.format(i + 1, groups[i].number, groups[i].courseTerm))
-        f.write('{},{},{},{},{},{},{},{},'.format(groups[i].lecture.instName, groups[i].lecture.courseName,
-                                                  groups[i].lecture.place, groups[i].lecture.type,
-                                                  groups[i].lecture.time.day, groups[i].lecture.time.fr,
-                                                  groups[i].lecture.time.to, groups[i].lecture.periodType))
-        if len(groups[i].tutorials) == 0:
+    fpath = os.path.join(BASE_DIR, 'Database.csv')
+    empty = ",,,,,,,"
+    if group is not None:
+        f = open(fpath, 'a')
+        f.write('{},{},{},'.format(group.courseTerm, group.creditHours, group.number))
+        f.write('{},{},{},{},{},{},{},{},{},{},{},'.format(group.lecture.instName, group.lecture.courseName,
+                                                           group.lecture.place, group.lecture.type,
+                                                           group.lecture.time.day, group.lecture.time.fr,
+                                                           group.lecture.time.to, group.lecExDay,
+                                                           group.lecExFrom, group.lecExTo,
+                                                           group.lecture.periodType))
+        if len(group.tutorials) == 0:
             f.write(empty + ",")
             f.write(empty + ",")
-        elif len(groups[i].tutorials) == 1:
+        elif len(group.tutorials) == 1:
             f.write(
-                '{},{},{},{},{},{},{},{},'.format(groups[i].tutorials[0].instName, groups[i].tutorials[0].courseName,
-                                                  groups[i].tutorials[0].place, groups[i].tutorials[0].type,
-                                                  groups[i].tutorials[0].time.day, groups[i].tutorials[0].time.fr,
-                                                  groups[i].tutorials[0].time.to, groups[i].tutorials[0].periodType))
+                '{},{},{},{},{},{},{},{},'.format(group.tutorials[0].instName, group.tutorials[0].courseName,
+                                                  group.tutorials[0].place, group.tutorials[0].type,
+                                                  group.tutorials[0].time.day, group.tutorials[0].time.fr,
+                                                  group.tutorials[0].time.to, group.tutorials[0].periodType))
             f.write(empty + ",")
         else:
             for j in range(2):
-                f.write('{},{},{},{},{},{},{},{},'.format(groups[i].tutorials[j].instName,
-                                                          groups[i].tutorials[j].courseName,
-                                                          groups[i].tutorials[j].place, groups[i].tutorials[0].type,
-                                                          groups[i].tutorials[j].time.day,
-                                                          groups[i].tutorials[j].time.fr,
-                                                          groups[i].tutorials[j].time.to,
-                                                          groups[i].tutorials[j].periodType))
-        if len(groups[i].labs) == 0:
+                f.write('{},{},{},{},{},{},{},{},'.format(group.tutorials[j].instName,
+                                                          group.tutorials[j].courseName,
+                                                          group.tutorials[j].place, group.tutorials[0].type,
+                                                          group.tutorials[j].time.day,
+                                                          group.tutorials[j].time.fr,
+                                                          group.tutorials[j].time.to,
+                                                          group.tutorials[j].periodType))
+        if len(group.labs) == 0:
             f.write(empty + ",")
             f.write(empty + "\n")
-        elif len(groups[i].labs) == 1:
+        elif len(group.labs) == 1:
             f.write(
-                '{},{},{},{},{},{},{},{},'.format(groups[i].labs[0].instName, groups[i].labs[0].courseName,
-                                                  groups[i].labs[0].place, groups[i].labs[0].type,
-                                                  groups[i].labs[0].time.day, groups[i].labs[0].time.fr,
-                                                  groups[i].labs[0].time.to, groups[i].labs[0].periodType))
+                '{},{},{},{},{},{},{},{},'.format(group.labs[0].instName, group.labs[0].courseName,
+                                                  group.labs[0].place, group.labs[0].type,
+                                                  group.labs[0].time.day, group.labs[0].time.fr,
+                                                  group.labs[0].time.to, group.labs[0].periodType))
             f.write(empty + "\n")
         else:
             for j in range(2):
@@ -742,20 +919,95 @@ def writeFile():
                     end = ","
                 else:
                     end = "\n"
-                f.write('{},{},{},{},{},{},{},{}{}'.format(groups[i].labs[j].instName,
-                                                           groups[i].labs[j].courseName,
-                                                           groups[i].labs[j].place, groups[i].labs[0].type,
-                                                           groups[i].labs[j].time.day,
-                                                           groups[i].labs[j].time.fr,
-                                                           groups[i].labs[j].time.to,
-                                                           groups[i].labs[j].periodType, end))
+                f.write('{},{},{},{},{},{},{},{}{}'.format(group.labs[j].instName,
+                                                           group.labs[j].courseName,
+                                                           group.labs[j].place, group.labs[0].type,
+                                                           group.labs[j].time.day,
+                                                           group.labs[j].time.fr,
+                                                           group.labs[j].time.to,
+                                                           group.labs[j].periodType, end))
+    else:
+        lines = open(fpath, 'r').readlines()
+        # f.write("Term_NUM,Credit_Hours,NUM,LEC_INST_NAME,LEC_CRS_NAME,LEC_PLACE,LEC_TYPE,LEC_DAY,LEC_FROM,LEC_TO,"
+        #         "Lec_Ex_Day,Lec_Ex_From,Lec_Ex_To,LEC_PER_TYPE,TUT1_INST_NAME,"
+        #         "TUT1_CRS_NAME,TUT1_PLACE,TUT1_TYPE,TUT1_DAY,TUT1_FROM,TUT1_TO,TUT1_PER_TYPE,TUT2_INST_NAME,"
+        #         "TUT2_CRS_NAME,TUT2_PLACE,TUT2_TYPE,TUT2_DAY,TUT2_FROM,TUT2_TO,TUT2_PER_TYPE,LAB1_INST_NAME,"
+        #         "LAB1_CRS_NAME,LAB1_PLACE,LAB1_TYPE,LAB1_DAY,LAB1_FROM,LAB1_TO,LAB1_PER_TYPE,LAB2_INST_NAME,"
+        #         "LAB2_CRS_NAME,LAB2_PLACE,LAB2_TYPE,LAB2_DAY,LAB2_FROM,LAB2_TO,LAB2_PER_TYPE\n")
+        # for i in range(len(groups)):
 
+        text = '{},{},{},'.format(groups[linetoChange - 1].courseTerm, groups[linetoChange - 1].creditHours,
+                                  groups[linetoChange - 1].number)
+        text += '{},{},{},{},{},{},{},{},{},{},{},'.format(groups[linetoChange - 1].lecture.instName,
+                                                           groups[linetoChange - 1].lecture.courseName,
+                                                           groups[linetoChange - 1].lecture.place,
+                                                           groups[linetoChange - 1].lecture.type,
+                                                           groups[linetoChange - 1].lecture.time.day,
+                                                           groups[linetoChange - 1].lecture.time.fr,
+                                                           groups[linetoChange - 1].lecture.time.to,
+                                                           groups[linetoChange - 1].lecExDay,
+                                                           groups[linetoChange - 1].lecExFrom,
+                                                           groups[linetoChange - 1].lecExTo,
+                                                           groups[linetoChange - 1].lecture.periodType)
+        if len(groups[linetoChange - 1].tutorials) == 0:
+            text += empty + ","
+            text += empty + ","
+        elif len(groups[linetoChange - 1].tutorials) == 1:
+            text += '{},{},{},{},{},{},{},{},'.format(groups[linetoChange - 1].tutorials[0].instName,
+                                                      groups[linetoChange - 1].tutorials[0].courseName,
+                                                      groups[linetoChange - 1].tutorials[0].place,
+                                                      groups[linetoChange - 1].tutorials[0].type,
+                                                      groups[linetoChange - 1].tutorials[0].time.day,
+                                                      groups[linetoChange - 1].tutorials[0].time.fr,
+                                                      groups[linetoChange - 1].tutorials[0].time.to,
+                                                      groups[linetoChange - 1].tutorials[0].periodType)
+            text += empty + ","
+        else:
+            for j in range(2):
+                text += '{},{},{},{},{},{},{},{},'.format(groups[linetoChange - 1].tutorials[j].instName,
+                                                          groups[linetoChange - 1].tutorials[j].courseName,
+                                                          groups[linetoChange - 1].tutorials[j].place,
+                                                          groups[linetoChange - 1].tutorials[0].type,
+                                                          groups[linetoChange - 1].tutorials[j].time.day,
+                                                          groups[linetoChange - 1].tutorials[j].time.fr,
+                                                          groups[linetoChange - 1].tutorials[j].time.to,
+                                                          groups[linetoChange - 1].tutorials[j].periodType)
+        if len(groups[linetoChange - 1].labs) == 0:
+            text += empty + ","
+            text += empty + "\n"
+        elif len(groups[linetoChange - 1].labs) == 1:
+            text += '{},{},{},{},{},{},{},{},'.format(groups[linetoChange - 1].labs[0].instName,
+                                                      groups[linetoChange - 1].labs[0].courseName,
+                                                      groups[linetoChange - 1].labs[0].place,
+                                                      groups[linetoChange - 1].labs[0].type,
+                                                      groups[linetoChange - 1].labs[0].time.day,
+                                                      groups[linetoChange - 1].labs[0].time.fr,
+                                                      groups[linetoChange - 1].labs[0].time.to,
+                                                      groups[linetoChange - 1].labs[0].periodType)
+            text += empty + "\n"
+        else:
+            for j in range(2):
+                if j == 0:
+                    end = ","
+                else:
+                    end = "\n"
+                text += '{},{},{},{},{},{},{},{}{}'.format(groups[linetoChange - 1].labs[j].instName,
+                                                           groups[linetoChange - 1].labs[j].courseName,
+                                                           groups[linetoChange - 1].labs[j].place,
+                                                           groups[linetoChange - 1].labs[0].type,
+                                                           groups[linetoChange - 1].labs[j].time.day,
+                                                           groups[linetoChange - 1].labs[j].time.fr,
+                                                           groups[linetoChange - 1].labs[j].time.to,
+                                                           groups[linetoChange - 1].labs[j].periodType, end)
+        lines[linetoChange+len(lines)-len(groups)-1] = text
+        f = open(fpath, 'w')
+        f.writelines(lines)
     f.close()
 
 
 if __name__ == '__main__':
     print("بسم الله الرحمن الرحيم")
-    print("Welcome to Database Filler Application. Let's start the journey")
+    print("Welcome to Database Filler Application. Let's start the journey\n")
     filling()
     print("Information saved to the file successfully")
     print("Congratulations")
