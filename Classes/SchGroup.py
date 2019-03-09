@@ -5,6 +5,7 @@ class SchGroup:
         self.labs = []
         self.number = None
         self.courseTerm = None
+        self.lecExPlace = ''
         self.lecExDay = ''
         self.lecExFrom = ''
         self.lecExTo = ''

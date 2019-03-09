@@ -1,13 +1,132 @@
-Term_NUM,Credit_Hours,NUM,LEC_INST_NAME,LEC_CRS_NAME,LEC_PLACE,LEC_TYPE,LEC_DAY,LEC_FROM,LEC_TO,Lec_Ex_Day,Lec_Ex_From,Lec_Ex_To,LEC_PER_TYPE,TUT1_INST_NAME,TUT1_CRS_NAME,TUT1_PLACE,TUT1_TYPE,TUT1_DAY,TUT1_FROM,TUT1_TO,TUT1_PER_TYPE,TUT2_INST_NAME,TUT2_CRS_NAME,TUT2_PLACE,TUT2_TYPE,TUT2_DAY,TUT2_FROM,TUT2_TO,TUT2_PER_TYPE,LAB1_INST_NAME,LAB1_CRS_NAME,LAB1_PLACE,LAB1_TYPE,LAB1_DAY,LAB1_FROM,LAB1_TO,LAB1_PER_TYPE,LAB2_INST_NAME,LAB2_CRS_NAME,LAB2_PLACE,LAB2_TYPE,LAB2_DAY,LAB2_FROM,LAB2_TO,LAB2_PER_TYPE
-6,4,4,Amr El Masry,Data Structure 2,a;dflkj,1,3,4,5,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-6,4,4,Layla,Programming 2,;adlfj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-6,3,1,;aslfkj,Circuits 2,a;fl,2,3,4,5,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-5,1,3,afd;slkj,Ethics,;ljk,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-5,None,5,afd;slkj,ahmed,asdf,2,3,4,5,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-5,4,2,jkjl,Programming 0,lj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-5,2,5,Ahmed Fawzy,;lkj,a;dflk,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-4,2,1,4,a;sfldj,as;fdlj,2,1,2,3,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-4,2,5,4,a;sfldj,;lfdaj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-8,1,4,a;sdlfkj,kkkkkkkkkk,lkj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-10,2,2,al;fdkj,;asdlkfj,1l;kj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-10,4,3,al;fdkj,xxxxxxxxxxx,a;dfslkj,1,2,3,4,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+termNum,creditHours,groupNum,lecInstName,lecCrsName,lecPlace,lecType,lecDay,lecFrom,lecTo,lecExPlace,lecExDay,lecExFrom,lecExTo,lecPeriodType,tut1InstName,tut1CrsName,tut1Place,tut1Type,tut1Day,tut1From,tut1To,tut1PeriodType,tut2InstName,tut2CrsName,tut2Place,tut2Type,tut2Day,tut2From,tut2To,tut2PeriodType,lab1InstName,lab1CrsName,lab1Place,lab1Type,lab1Day,lab1From,lab1To,lab1PeriodType,lab2InstName,lab2CrsName,lab2Place,lab2Type,lab2Day,lab2From,lab2To,lab2PeriodType
+6,3,1,Dr.Amr El Masry,Data Structures 2,Class C40,1,1,6,8,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 2,Lab,2,1,4,4,Lab,Unknown,Data Structures 2,Lab,2,1,5,5,Lab
+6,3,1,Dr.Hania Farag,Microprocessors Systems,Class C27,1,2,2,4,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Microprocessors Systems,Lab,2,3,1,1,Lab,Unknown,Microprocessors Systems,Lab,2,3,0,0,Lab
+6,3,1,Dr.Mohamed Rezk,Computer Architecture,Class C27,1,2,5,7,,,,,Lecture,Unknown,Computer Architecture,C704,2,4,7,7,Tut,Unknown,Computer Architecture,C704,2,4,6,6,Tut,,,,,,,,,,,,,,,,
+6,3,1,Dr.Ahmed Elnahas,Systems Programming,Class C27,1,3,2,4,,,,,Lecture,Unknown,Systems Programming,Lab,2,3,0,0,Tut,Unknown,Systems Programming,Lab,2,3,1,1,Tut,,,,,,,,,,,,,,,,
+6,3,1,Dr.Mona Loutfy,Digital Signal Processing,Class C38,1,4,3,5,,,,,Lecture,Unknown,Digital Signal Processing,C703,2,4,6,6,Tut,Unknown,Digital Signal Processing,C703,2,4,7,7,Tut,,,,,,,,,,,,,,,,
+6,3,2,Dr.Amr El Masry,Data Structures 2,Class C27,1,5,6,8,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 2,Lab,2,5,4,4,Lab,Unknown,Data Structures 2,Lab,2,5,5,5,Lab
+6,3,2,Dr.Mohamed Elbanna,Microprocessors Systems,K5,1,3,2,3,C40,4,4,5,Lecture,,,,,,,,,,,,,,,,,Unknown,Microprocessors Systems,Lab,2,4,1,1,Lab,Unknown,Microprocessors Systems,Lab,2,4,0,0,Lab
+6,3,2,Dr.Mohamed Rezk,Computer Architecture,Class C28,1,3,4,6,,,,,Lecture,Unknown,Computer Architecture,C704,2,1,1,1,Tut,Unknown,Computer Architecture,C704,2,1,0,0,Tut,,,,,,,,,,,,,,,,
+6,3,2,Dr.Ahmed Elnahas,Systems Programming,Class C40,1,4,2,4,,,,,Lecture,Unknown,Systems Programming,Lab,2,4,0,0,Tut,Unknown,Systems Programming,Lab,2,4,1,1,Tut,,,,,,,,,,,,,,,,
+6,3,2,Dr.Mona Loutfy,Digital Signal Processing,Class C39,1,1,2,4,,,,,Lecture,Unknown,Digital Signal Processing,C703,2,1,0,0,Tut,Unknown,Digital Signal Processing,C703,2,1,1,1,Tut,,,,,,,,,,,,,,,,
+6,3,3,Dr.Amr El Masry,Data Structures 2,Class C27,1,3,8,10,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 2,Lab,2,0,4,4,Lab,Unknown,Data Structures 2,Lab,2,0,5,5,Lab
+6,3,3,Dr.Hania Farag,Microprocessors Systems,Class C28,1,4,2,4,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Microprocessors Systems,Lab,2,3,7,7,Lab,Unknown,Microprocessors Systems,Lab,2,3,6,6,Lab
+6,3,3,Dr.Mohamed Rezk,Computer Architecture,Class C28,1,4,5,7,,,,,Lecture,Unknown,Computer Architecture,C704,2,5,1,1,Tut,Unknown,Computer Architecture,C704,2,5,0,0,Tut,,,,,,,,,,,,,,,,
+6,3,3,Dr.Ahmed Elnahas,Systems Programming,Class C38,1,5,2,4,,,,,Lecture,Unknown,Systems Programming,Lab,2,3,6,6,Tut,Unknown,Systems Programming,Lab,2,3,,7,7,Tut,,,,,,,,,,,,,,,
+6,3,3,Dr.Ahmed Eltarras,Digital Signal Processing,Class C27,1,0,0,2,,,,,Lecture,Unknown,Digital Signal Processing,C11,2,5,0,0,Tut,Unknown,Digital Signal Processing,C11,2,5,1,1,Tut,,,,,,,,,,,,,,,,
+6,3,4,Dr.Amr El Masry,Data Structures 2,Class C39,1,2,9,11,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 2,Lab,2,2,6,6,Lab,Unknown,Data Structures 2,Lab,2,2,7,7,Lab
+6,3,4,Dr.Mohamed Elbanna,Microprocessors Systems,K5,1,3,4,5,C40,5,4,5,Lecture,,,,,,,,,,,,,,,,,Unknown,Microprocessors Systems,Lab,2,3,3,3,Lab,Unknown,Microprocessors Systems,Lab,2,3,2,2,Lab
+6,3,4,Dr.Amira Youssef,Computer Architecture,Class C40,1,0,6,8,,,,,Lecture,Unknown,Computer Architecture,C12,2,5,9,9,Tut,Unknown,Computer Architecture,C12,2,5,8,8,Tut,,,,,,,,,,,,,,,,
+6,3,4,Dr.Ahmed Elnahas,Systems Programming,Class C27,1,3,6,7,C38,5,6,7,Lecture,Unknown,Systems Programming,Lab,2,3,2,2,Tut,Unknown,Systems Programming,Lab,2,3,3,3,Tut,,,,,,,,,,,,,,,,
+6,3,4,Dr.Ahmed Eltarras,Digital Signal Processing,Class C27,1,0,3,5,,,,,Lecture,Unknown,Digital Signal Processing,C11,2,5,8,8,Tut,Unknown,Digital Signal Processing,C11,2,5,9,9,Tut,,,,,,,,,,,,,,,,
+6,3,5,Dr.Amr El Masry,Data Structures 2,Class C39,1,2,6,8,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 2,Lab,2,2,4,4,Lab,Unknown,Data Structures 2,Lab,2,2,5,5,Lab
+6,3,5,Dr.Mohamed Elbanna,Microprocessors Systems,Class C39,1,4,2,3,C40,5,4,5,Lecture,,,,,,,,,,,,,,,,,Unknown,Microprocessors Systems,Lab,2,3,4,4,Lab,Unknown,Microprocessors Systems,Lab,2,3,5,5,Lab
+6,3,5,Dr.Amira Youssef,Computer Architecture,Class C38,1,5,8,10,,,,,Lecture,Unknown,Computer Architecture,C704,2,4,5,5,Tut,Unknown,Computer Architecture,C704,2,4,4,4,Tut,,,,,,,,,,,,,,,,
+6,3,5,Dr.Ahmed Elnahas,Systems Programming,Class C40,1,4,6,7,C38,5,6,7,Lecture,Unknown,Systems Programming,Lab,2,3,4,4,Tut,Unknown,Systems Programming,Lab,2,3,5,5,Tut,,,,,,,,,,,,,,,,
+6,3,5,Dr.Hassan Elragal,Digital Signal Processing,Class P45,1,3,1,3,,,,,Lecture,Unknown,Digital Signal Processing,C703,2,4,4,4,Tut,Unknown,Digital Signal Processing,C703,2,4,5,5,TutDr.,,,,,,,,,,,,,,,,
+4,4,1,Dr.Mervat Mikhail,Programming 2,Class 103,1,0,2,4,,,,,Lecture,Unknown,Programming 2,Class P43,2,2,4,4,Tut,Unknown,Programming 2,Class K6,2,3,1,1,Tut,Unknown,Programming 2,Lab,2,0,0,0,Lab,Unknown,Programming 2,Lab,2,0,1,1,Lab
+4,4,2,Dr.Mervat Mikhail,Programming 2,Class 103,1,0,5,7,,,,,Lecture,Unknown,Programming 2,Class 72,2,0,0,0,Tut,Unknown,Programming 2,Class 702,2,3,7,7,Tut,Unknown,Programming 2,Lab,2,1,6,6,Lab,Unknown,Programming 2,Lab,2,1,7,7,Lab
+4,4,3,Dr.Mervat Mikhail,Programming 2,Class P47,1,2,1,3,,,,,Lecture,Unknown,Programming 2,Class 704,2,5,7,7,Tut,Unknown,Programming 2,Class 704,2,5,8,8,Tut,Unknown,Programming 2,Lab,2,1,2,2,Lab,Unknown,Programming 2,Lab,2,1,3,3,Lab
+4,4,4,Dr.Mervat Mikhail,Programming 2,Class 71,1,5,0,2,,,,,Lecture,Unknown,Programming 2,Class 702,2,1,0,0,Tut,Unknown,Programming 2,Class 703,2,1,5,5,Tut,Unknown,Programming 2,Lab,2,3,2,2,Lab,Unknown,Programming 2,Lab,2,3,3,3,Lab
+4,4,5,Dr.Mervat Mikhail,Programming 2,Class 71,1,5,3,5,,,,,Lecture,Unknown,Programming 2,Class C11,2,5,8,8,Tut,Unknown,Programming 2,Class 702,2,1,9,9,Tut,Unknown,Programming 2,Lab,2,3,4,4,Lab,Unknown,Programming 2,Lab,2,3,5,5,Lab
+4,3,1,Dr.Amr Abdelrazek,Math 4,Class C8,1,1,0,2,,,,,Lecture,Unknown,Math 4,Class 701,2,1,4,4,Tut,Unknown,Math 4,Class 701,2,1,5,5,Tut,,,,,,,,,,,,,,,,
+4,3,2,Dr.Amr Abdelrazek,Math 4,Class C8,1,1,3,5,,,,,Lecture,Unknown,Math 4,Class 704,2,3,2,2,Tut,Unknown,Math 4,Class 704,2,3,3,3,Tut,,,,,,,,,,,,,,,,
+4,3,3,Dr.Amr Abdelrazek,Math 4,Class C8,1,5,2,4,,,,,Lecture,Unknown,Math 4,Class 701,2,1,0,0,Tut,Unknown,Math 4,Class 701,2,1,1,1,Tut,,,,,,,,,,,,,,,,
+4,3,4,Dr.Bassant Youssef,Math 4,Class C40,1,0,3,5,,,,,Lecture,Unknown,Math 4,Class 704,2,3,4,4,Tut,Unknown,Math 4,Class 704,2,3,5,5,Tut,,,,,,,,,,,,,,,,
+4,3,5,Dr.Bassant Youssef,Math 4,Class C39,1,3,8,10,,,,,Lecture,Unknown,Math 4,Class 703,2,5,6,6,Tut,Unknown,Math 4,Class 703,2,5,7,7,Tut,,,,,,,,,,,,,,,,
+4,3,1,Dr.Magdy Abdelazim,Digital Logic Circuits 1,L4,1,2,0,1,,,,,Lecture,Unknown,Digital Logic Circuits 1,Class P41,2,2,2,2,Tut,Unknown,Digital Logic Circuits 1,Class P41,2,2,3,3,Tut,Unknown,Digital Logic Circuits 1,Lab,1,3,0,0,Lab,Unknown,Digital Logic Circuits 1,Lab,1,3,1,1,Lab
+4,3,2,Dr.Magdy Abdelazim,Digital Logic Circuits 1,L4,1,0,2,4,,,,,Lecture,Unknown,Digital Logic Circuits 1,Class 702,2,3,8,8,Tut,Unknown,Digital Logic Circuits 1,Class 702,2,3,9,9,Tut,Unknown,Digital Logic Circuits 1,Lab,1,3,6,6,Lab,Unknown,Digital Logic Circuits 1,Lab,1,0,1,1,Lab
+4,3,3,Dr.Magdy Abdelazim,Digital Logic Circuits 1,L4,1,4,0,1,,,,,Lecture,Unknown,Digital Logic Circuits 1,Class P41,2,4,4,4,Tut,Unknown,Digital Logic Circuits 1,Class P41,2,4,5,5,Tut,Unknown,Digital Logic Circuits 1,Lab,1,5,6,6,Lab,Unknown,Digital Logic Circuits 1,Lab,1,5,9,9,Lab
+4,3,4,Dr.Magdy Abdelazim,Digital Logic Circuits 1,L4,1,0,6,7,,,,,Lecture,Unknown,Digital Logic Circuits 1,Class 72,2,0,8,8,Tut,Unknown,Digital Logic Circuits 1,Class 72,2,0,9,9,Tut,Unknown,Digital Logic Circuits 1,Lab,1,1,4,4,Lab,Unknown,Digital Logic Circuits 1,Lab,1,5,5,5,Lab
+4,3,5,Dr.Magdy Abdelazim,Digital Logic Circuits 1,L4,1,4,6,7,,,,,Lecture,Unknown,Digital Logic Circuits 1,Class 704,2,3,6,6,Tut,Unknown,Digital Logic Circuits 1,Class 704,2,3,7,7,Tut,Unknown,Digital Logic Circuits 1,Lab,1,1,7,7,Lab,Unknown,Digital Logic Circuits 1,Lab,1,1,8,8,Lab
+4,3,1,Dr.Hesham Elmongui,Data Structures 1,Class C38,1,3,2,3,L5,5,2,3,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 1,Lab,2,2,2,2,Lab,Unknown,Data Structures 1,Lab,2,2,3,3,Lab
+4,3,2,Dr.Hesham Elmongui,Data Structures 1,Class C38,1,3,4,5,L5,5,4,5,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 1,Lab,2,3,8,8,Lab,Unknown,Data Structures 1,Lab,2,3,9,9,Lab
+4,3,3,Dr.Hesham Elmongui,Data Structures 1,L4,1,4,2,3,L5,5,4,5,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 1,Lab,2,1,2,2,Lab,Unknown,Data Structures 1,Lab,2,1,3,3,Lab
+4,3,4,Dr.Saleh Elshehaby ,Data Structures 1,Class C28,1,3,7,9,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 1,Lab,2,0,8,8,Lab,Unknown,Data Structures 1,Lab,2,0,9,9,Lab
+4,3,5,Dr.Saleh Elshehaby ,Data Structures 1,K5,1,4,8,10,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Data Structures 1,Lab,2,3,6,6,Lab,Unknown,Data Structures 1,Lab,2,3,7,7,Lab
+4,3,1,Dr.Adel Elfahhar,Electrical Circuits 2,k5,1,5,4,5,,,,,Lecture,Unknown,Electrical Circuits 2,Class P43,1,5,6,6,Tut,Unknown,Electrical Circuits 2,Class 72,1,5,7,7,Tut,Unknown,Electrical Circuits 2,Lab,2,3,4,4,Lab,Unknown,Electrical Circuits 2,Lab,2,3,5,5,Lab
+4,3,2,Dr.Adel Elfahhar,Electrical Circuits 2,K5,1,5,2,3,,,,,Lecture,Unknown,Electrical Circuits 2,Class 72,1,5,0,0,Tut,Unknown,Electrical Circuits 2,Class 701,1,5,1,1,Tut,Unknown,Electrical Circuits 2,Lab,2,3,2,2,Lab,Unknown,Electrical Circuits 2,Lab,2,3,3,3,Lab
+4,3,3,Dr.Adel Elfahhar,Electrical Circuits 2,Class P47-B,1,2,4,5,,,,,Lecture,Unknown,Electrical Circuits 2,Class 702,1,1,4,4,Tut,Unknown,Electrical Circuits 2,Class 704,1,1,5,5,Tut,Unknown,Electrical Circuits 2,Lab,2,1,0,0,Lab,Unknown,Electrical Circuits 2,Lab,2,1,1,1,Lab
+4,3,4,Dr.Nour Eldin Hassan,Electrical Circuits 2,Class P47-B,1,1,2,3,,,,,Lecture,Unknown,Electrical Circuits 2,Class ,1,1,1,1,Tut,Unknown,Electrical Circuits 2,Class 703,1,5,4,4,Tut,Unknown,Electrical Circuits 2,Lab,2,3,0,0,Lab,Unknown,Electrical Circuits 2,Lab,2,3,1,1,Lab
+4,3,5,Dr.Nour Eldin Hassan,Electrical Circuits 2,Class P47-B,1,1,4,5,,,,,Lecture,Unknown,Electrical Circuits 2,Class 701,1,1,3,3,Tut,Unknown,Electrical Circuits 2,Class 703,1,1,6,6,Tut,Unknown,Electrical Circuits 2,Lab,2,5,6,6,Lab,Unknown,Electrical Circuits 2,Lab,2,5,7,7,Lab
+8,3,1,Dr.Hossam Eldin Moustafa,Embedded Systems,Class C28,1,0,0,2,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Embedded Systems,Lab,2,0,5,5,Lab,Unknown,Embedded Systems,Lab,2,0,4,4,Lab
+8,3,2,Dr.Hossam Eldin Moustafa,Embedded Systems,Class C28,1,0,3,5,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Embedded Systems ,Lab,2,0,0,0,Lab,Unknown,Embedded Systems ,Lab,2,0,1,1,Lab
+8,3,3,Dr.Nayera Sadek,Embedded Systems,Class C40,1,2,0,2,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Embedded Systems ,Lab,2,2,4,4,Lab,Unknown,Embedded Systems ,Lab,2,2,5,5,Lab
+8,3,4,Dr.Nayera Sadek,Embedded Systems,Class C38,1,4,0,2,,,,,Lecture,,,,,,,,,,,,,,,,,Unknown,Embedded Systems,Lab,2,4,4,4,Lab,Unknown,Embedded Systems,Lab,2,4,5,5,Lab
+8,3,1,Dr.Yasser Fouad,Software Engineering,Class C38,1,1,3,5,,,,,Lecture,Unknown,Software Engineering,Class C12,2,1,6,6,Tut,Unknown,Software Engineering,Class C12,2,1,7,7,Tut,,,,,,,,,,,,,,,,
+8,3,1,Dr.Ahmed Younes,Switching Theory and Models of Computation,L5,1,2,0,2,,,,,Lecture,Unknown,Switching Theory and Models of Computation,Class 703,2,2,4,4,Tut,Unknown,Switching Theory and Models of Computation,Class 703,2,2,5,5,Tut,,,,,,,,,,,,,,,,
+8,3,1,Dr.Noha Ossman,Analog Communications,Class P41,1,3,4,5,,,,,Lecture,Unknown,Analog Communications,Class P43,1,3,1,1,Tut,Unknown,Analog Communications,Class 74,1,3,6,6,Tut,Unknown,Analog Communications,Lab,2,3,2,2,Lab,Unknown,Analog Communications,Lab,2,3,3,3,Lab
+8,3,1,Dr. Said Elkhamy,Digital Communications,K5,1,4,2,3,,,,,Lecture,Unknown,Digital Communications,Class 703,1,4,0,0,Tut,Unknown,Digital Communications,Class C12,1,4,7,7,Tut,Unknown,Digital Communications,Lab,2,4,4,4,Lab,Unknown,Digital Communications,Lab,2,4,5,5,Lab
+8,3,2,Dr. Said Elkhamy,Digital Communications,K5,1,4,4,5,,,,,Lecture,Unknown,Digital Communications,Class 703,1,4,2,2,Tut,Unknown,Digital Communications,Class C12,1,4,9,9,Tut,Unknown,Digital Communications,Lab,2,4,6,6,Lab,Unknown,Digital Communications,Lab,2,4,7,7,Lab
+8,3,3,Dr.Hesham Tolba,Digital Communications,Class C40,1,3,2,3,,,,,Lecture,Unknown,Digital Communications,Class 74,1,3,0,0,Tut,Unknown,Digital Communications,Class C12,1,3,7,7,Tut,Unknown,Digital Communications,Lab,2,3,4,4,Lab,Unknown,Digital Communications,Lab,2,3,5,5,Lab
+8,3,4,Dr.Hesham Tolba,Digital Communications,Class C40,1,3,4,5,,,,,Lecture,Unknown,Digital Communications,Class 74,1,3,2,2,Tut,Unknown,Digital Communications,Class 704,1,3,9,9,Tut,Unknown,Digital Communications,Lab,2,3,6,6,Lab,Unknown,Digital Communications,Lab,2,3,7,7,Lab
+8,4,1,Dr.Ahmed Elsayed,Computer Networks,Class C39,1,5,4,6,,,,,Lecture,Unknown,Computer Networks,Class 704,2,5,2,2,Tut,Unknown,Computer Networks,Class 704,2,5,3,3,Tut,Unknown,Computer Networks,Lab,2,5,2,2,Lab,Unknown,Computer Networks,Lab,2,5,3,3,Lab
+8,4,2,Dr.Ahmed Elsayed,Computer Networks,Class C39,1,5,7,9,,,,,Lecture,Unknown,Computer Networks,Class C11,2,5,10,10,Tut,Unknown,Computer Networks,Class C11,2,5,11,11,Tut,Unknown,Computer Networks,Lab,2,5,10,10,Lab,Unknown,Computer Networks,Lab,2,5,11,11,Lab
+8,4,3,Dr.Moustafa Elnainay,Computer Networks,Class C38,1,1,0,2,,,,,Lecture,Unknown,Computer Networks,Class C11,2,1,4,4,Tut,Unknown,Computer Networks,Class C11,2,1,5,5,Tut,Unknown,Computer Networks,Lab,2,1,4,4,Lab,Unknown,Computer Networks,Lab,2,1,5,5,Lab
+8,4,4,Dr.Moustafa Elnainay,Computer Networks,Class C26,1,5,0,2,,,,,Lecture,Unknown,Computer Networks,Class C11,2,5,4,4,Tut,Unknown,Computer Networks,Class C11,2,5,5,5,Tut,Unknown,Computer Networks,Lab,2,5,4,4,Lab,Unknown,Computer Networks,Lab,2,5,5,5,Lab
+8,3,2,Dr.Ibrahim Abdlsalam,Numerical Analysis,Class 103,1,1,4,6,,,,,Lecture,Unknown,Numerical Analysis,Class 703,2,1,8,8,Tut,Unknown,Numerical Analysis,Class 703,2,1,9,9,Tut,,,,,,,,,,,,,,,,
+8,3,2,Dr.Onsy Abdelalim,Mobile and Wireless Communications,Class tyto,1,2,2,4,,,,,Lecture,Unknown,Mobile and Wireless Communications ,Class tyto,2,2,0,0,Tut,Unknown,Mobile and Wireless Communications ,Class tyto,2,2,1,1,Tut,,,,,,,,,,,,,,,,
+8,3,2,Dr.Ahmed Eltarras,Elctromagnetics,Class C11,1,2,7,9,,,,,Lecture,Unknown,Elctormagnetics,Class C11,2,2,10,10,Tut,Unknown,Elctormagnetics,Class C11,2,2,11,11,Tut,,,,,,,,,,,,,,,,
+8,3,2,Dr.Nour Eldin Hassan,Antennas and Wave Propagation,Class ,1,3,2,4,,,,,Lecture,Unknown,Antennas and Wave Propagation,Class ,2,3,6,6,Tut,Unknown,Antennas and Wave Propagation,Class ,2,3,7,7,Tut,,,,,,,,,,,,,,,,
+8,3,2,Dr.Nour Eldin Hassan,Microwave and Optical Transmission Media,Class P41,1,5,0,2,,,,,Lecture,Unknown,Microwave and Optical Transmission Media,Class C39,2,5,4,4,Tut,Unknown,Microwave and Optical Transmission Media,Class C39,2,5,5,5,Tut,,,,,,,,,,,,,,,,
+8,3,3,Dr.mohamed Azab(Group5),New Trends in CCE,Class H41,1,0,2,4,,,,,Lecture,Unknown,New Trends in CCE,Class C12,2,0,0,0,Tut,Unknown,New Trends in CCE,Class C12,2,0,1,1,Tut,,,,,,,,,,,,,,,,
+8,3,3,Dr.Marwan Torki(Group6),New Trends in CCE,Class H41,1,0,7,9,,,,,Lecture,Unknown,New Trends in CCE,Class C12,2,0,10,10,Tut,Unknown,New Trends in CCE,Class C12,2,0,11,11,Tut,,,,,,,,,,,,,,,,
+8,3,4,Dr.Mohamed Salama(Group4),New Trends in CCE,Class P47-A,1,0,4,6,,,,,Lecture,Unknown,New Trends in CCE,Class P47-A,2,0,8,8,Tut,Unknown,New Trends in CCE,Class P47-A,2,0,9,9,Tut,,,,,,,,,,,,,,,,
+8,3,3,Dr.Marwan Torki,Pattern Recognition,Class H41,1,4,0,2,,,,,Lecture,Unknown,Pattern Recognition,Class 72,2,4,4,4,Tut,Unknown,Pattern Recognition,Class 72,2,4,5,5,Tut,,,,,,,,,,,,,,,,
+8,3,4,Dr.Marwan Torki,Pattern Recognition,Class C40,1,2,3,5,,,,,Lecture,Unknown,Pattern Recognition,Class C12,2,2,6,6,Tut,Unknown,Pattern Recognition,Class C12,2,2,7,7,Tut,,,,,,,,,,,,,,,,
+8,3,3,Dr.Emad Saady,Artificial Intelligence,Class C8,1,4,6,8,,,,,Lecture,Unknown,Artificial Intelligence,Class P43,2,4,4,4,Tut,Unknown,Artificial Intelligence,Class P43,2,4,5,5,Tut,,,,,,,,,,,,,,,,
+8,4,3,Dr.Yasser Fouad,Database Systems,Class ,1,5,7,9,,,,,Lecture,Unknown,Database Systems,Class C11,2,5,10,10,Tut,Unknown,Database Systems,Class C11,2,5,11,11,Tut,Unknown,Database Systems,Lab,2,5,10,10,Lab,Unknown,Database Systems,Lab,2,5,11,11,Lab
+8,3,4,Dr.Mohamed Rezk,Digital Integrated Circuits Design,Class C39,1,1,5,7,,,,,Lecture,Unknown,Digital Integrated Circuits Design,Class C12,2,1,8,8,Tut,Unknown,Digital Integrated Circuits Design,Class C12,2,1,9,9,Tut,,,,,,,,,,,,,,,,
+8,3,4,Dr.Mohamed Abdelhafez,Computer Graphics,Class H41,1,5,7,9,,,,,Lecture,Unknown,Computer Graphics ,Class H41,2,5,10,10,Tut,Unknown,Computer Graphics ,Class H41,2,5,11,11,Tut,,,,,,,,,,,,,,,,
+10,3,1,Dr.Yasmine Abou Elseoud,Performance Evaluation,L5,1,0,4,6,,,,,Lecture,Unknown,Performance Evaluation,Class P43,2,0,2,2,Tut,Unknown,Performance Evaluation,Class P43,2,0,3,3,Tut,,,,,,,,,,,,,,,,
+10,3,2,Dr.Yasmine Abou Elseoud,Performance Evaluation,Class C8,1,3,3,5,,,,,Lecture,Unknown,Performance Evaluation,Class ,2,3,0,0,Tut,Unknown,Performance Evaluation,Class ,2,3,1,1,Tut,,,,,,,,,,,,,,,,
+10,3,3,Dr.Yasmine Abou Elseoud,Performance Evaluation,Class C8,1,3,6,8,,,,,Lecture,Unknown,Performance Evaluation,Class 8,2,2,2,2,Tut,Unknown,Performance Evaluation,Class 8,2,2,3,3,Tut,,,,,,,,,,,,,,,,
+10,3,1,Dr.Hesham Elmongui,Computer and Network Security,Class C28,1,1,2,3,Class C39,4,4,5,Lecture,Unknown,Computer and Network Security,Class C11,2,1,0,0,Tut,Unknown,Computer and Network Security,Class C11,2,1,1,1,Tut,,,,,,,,,,,,,,,,
+10,3,2,Dr.Hesham Elmongui,Computer and Network Security,Class C28,1,1,4,5,Class C39,4,4,5,Lecture,Unknown,Computer and Network Security,Class C11,2,1,2,2,Tut,Unknown,Computer and Network Security,Class C11,2,1,3,3,Tut,,,,,,,,,,,,,,,,
+10,3,3,Dr.Hesham Elmongui,Computer and Network Security,Class C39,1,2,4,5,Class C39,4,6,7,Lecture,Unknown,Computer and Network Security,Class 701,2,2,2,2,Tut,Unknown,Computer and Network Security,Class 701,2,2,3,3,Tut,,,,,,,,,,,,,,,,
+10,3,1,Dr.Nagia Ghanem,Programming Languages Translation,Class C38,1,2,6,8,,,,,Lecture,Unknown,Programming Languages Translation,Class C38,2,2,10,10,Tut,Unknown,Programming Languages Translation,Class C38,2,2,11,11,Tut,,,,,,,,,,,,,,,,
+10,3,1,Dr.Hesham Elmongui(Group1),New Trends in CCE,Class C11,1,3,6,8,,,,,Lecture,Unknown,New Trends in CCE,Class C11,2,3,10,10,Tut,Unknown,New Trends in CCE,Class C11,2,3,11,11,Tut,,,,,,,,,,,,,,,,
+10,3,2,Dr.Ahmed Elsayed(Group2),New Trends in CCE,Class C11,1,2,4,6,,,,,Lecture,Unknown,New Trends in CCE,Class C12,2,2,8,8,Tut,Unknown,New Trends in CCE,Class C12,2,2,9,9,Tut,,,,,,,,,,,,,,,,
+10,3,3,Dr.Onsy Abdelalim(Group3),New Trends in CCE,Class tyto,1,4,2,4,,,,,Lecture,Unknown,New Trends in CCE,Class tyto,2,4,0,0,Tut,Unknown,New Trends in CCE,Class tyto,2,4,1,1,Tut,,,,,,,,,,,,,,,,
+10,3,1,Dr.Mona Loutfy,Dsp implementation of communication systems,Class P43,1,5,2,4,,,,,Lecture,Unknown,Dsp implementation of communication systems,Class P43,2,5,0,0,Tut,Unknown,Dsp implementation of communication systems,Class P43,2,5,1,1,Tut,,,,,,,,,,,,,,,,
+10,3,3,Dr.Shawky Shaaban,Communication Systems,Class ,1,2,6,7,,,,,Lecture,Unknown,Communication Systems,Class ,1,2,8,8,Tut,,,,,,,,,Unknown,Communication Systems,Lab,2,2,10,10,Lab,,,,,,,,
+10,3,3,Unknown,Project2,Class ,1,1,10,11,Class ,3,11,11,Lecture,Unknown,Project2 ,Class ,2,4,10,10,Tut,Unknown,Project2 ,Class ,2,4,11,11,Tut,Unknown,Project2 ,Lab,2,4,10,10,Lab,Unknown,Project2 ,Lab,2,4,11,11,Lab
+10,3,3,Dr.Yasser Fouad,Software Engineering,Class C8,1,3,0,2,,,,,Lecture,Unknown,Software Engineering,Class ,2,3,4,4,Tut,Unknown,Software Engineering,Class ,2,3,5,5,Tut,,,,,,,,,,,,,,,,
+11,2,1,Dr.Mohamed Salama,Computers and Society,Class P47-A,1,0,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Abeer Haasan,Foundations of Marketing,L4,1,1,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Abeer Haasan,Foundations of Marketing,L4,1,1,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Abeer Haasan,Foundations of Marketing,L4,1,1,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Wael Hassan,Introduction to Finance,L5,1,1,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Wael Hassan,Introduction to Finance,L5,1,1,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Wael Hassan,Introduction to Finance,L4,1,2,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,4,Dr.Wael Hassan,Introduction to Finance,L4,1,2,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Nermine Harraz,Engineering Economics,L4,1,2,4,5,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Nermine Harraz,Engineering Economics,L4,1,2,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Nermine Harraz,Engineering Economics,K5,1,4,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,4,Dr.Reem Elkadeem,Engineering Economics,Class 103,1,2,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,5,Dr.Reem Elkadeem,Engineering Economics,L4,1,4,4,5,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Mohamed Gaber,Accounting,Class C40,1,2,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Mohamed Gaber,Accounting,Class C40,1,2,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Mohamed Gaber,Accounting,Class C40,1,3,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,4,Dr.Mohamed Gaber,Accounting,Class C40,1,3,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Yasser Elfahham,Project Management,Class 71,1,3,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Yasser Elfahham,Project Management,Class 103,1,3,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Yasser Elfahham,Project Management,Class 103,1,4,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,4,Dr.Yasser Elfahham,Project Management,Class 103,1,4,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,5,Dr.Yasser Elfahham,Project Management,Class 103,1,4,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Mohamed Hassan,Law & Engineering Ethics,Class 71,1,3,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Mohamed Hassan,Law & Engineering Ethics,Class 71,1,3,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Mohamed Hassan,Law & Engineering Ethics,Class 71,1,1,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,4,Dr.Mohamed Hassan,Law & Engineering Ethics,Class 71,1,1,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Mohamed Gomaa,Professional Communication Skills,Class 103,1,4,2,3,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Mohamed Gomaa,Professional Communication Skills,Class 103,1,4,4,5,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Islam Ali,Feasibility Studies,L5,1,4,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Islam Ali,Feasibility Studies,L5,1,4,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Moustafa Elmokadem,Feasibility Studies,L5,1,5,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,4,Dr.Moustafa Elmokadem,Feasibility Studies,L5,1,5,10,11,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,1,Dr.Tamer Helmy,Technical Writing,K5,1,5,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,2,Dr.Tamer Helmy,Technical Writing,K5,1,5,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,3,Dr.Tamer Helmy,Technical Writing,Class C26,1,3,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,4,Ahmed Eltarras,Technical Writing,K5,1,1,8,9,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,5,Ahmed Eltarras,Technical Writing,K5,1,1,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,2,6,Dr.Reem Elkadeem,Engineering Economics,L5,1,4,6,7,,,,,Lecture,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
