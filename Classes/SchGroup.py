@@ -1,6 +1,11 @@
+from Classes.Lecture import Lecture
+
+
 class SchGroup:
-    def __init__(self):
+    def __init__(self, lecture=False):
         self.lecture = None
+        if lecture:
+            self.lecture = Lecture()
         self.tutorials = []
         self.labs = []
         self.number = None
