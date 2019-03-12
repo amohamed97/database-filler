@@ -231,7 +231,7 @@ def check_place(cell_text):
         place = cell_text_content[-1]
     if place.isdigit():
         place = 'Class ' + place
-    return place
+    return place.strip()
 
 
 def add_lecture_extension(group, place):
@@ -244,10 +244,9 @@ def add_lecture_extension(group, place):
 def add_lecture(group, row, col, case=False):
     global course_name, group_number, day, fr, to
     main_lecture = sheet.cell_value(row, col)
-    place_cell = sheet.cell_value(row + 1, col)
     lecture = group.lecture
     lecture.instName = main_lecture[main_lecture.find('Dr'):]
-    lecture.place = place_cell.split(':')[-1]
+    lecture.place = check_place(sheet.cell_value(row + 1, col))
     lecture.courseName = course_name
     lecture.groupNum = group_number
     lecture.type = 1
