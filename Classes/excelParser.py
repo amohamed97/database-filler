@@ -7,9 +7,8 @@ from Classes.Lecture import Lecture
 from Classes.SchGroup import SchGroup
 from Classes.Tutorial import Tutorial
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-excel_path = os.path.join(base_dir, 'CCE 4th&6th term-Spring 2019 -5-2-2019-converted.xlsx')
-# path = "D://downloads//CCE 4th&6th term-Spring 2019 -5-2-2019.pdf"
-# path2 = "CCE 4th&6th term-Spring 2019 -5-2-2019-converted.xlsx"
+tables_path = os.path.join(base_dir, 'tables_excel')
+excel_path = os.path.join(tables_path, 'CCE 4th&6th term-Spring 2019 -5-2-2019-converted.xlsx')
 
 
 wb = xlrd.open_workbook(excel_path)
