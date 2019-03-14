@@ -8,7 +8,7 @@ from Classes.SchGroup import SchGroup
 from Classes.Tutorial import Tutorial
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 tables_path = os.path.join(base_dir, 'tables_excel')
-excel_path = os.path.join(tables_path, 'CCE 4th&6th term-Spring 2019 -5-2-2019-converted.xlsx')
+excel_path = os.path.join(tables_path, 'CCE 8th_10th term-Spring 2019 -5-2-2019-converted.xlsx')
 
 
 wb = xlrd.open_workbook(excel_path)
@@ -321,7 +321,7 @@ def extract_table():
     global group_number, term_number, course_name, day, fr, to
     col = 3
     group_courses = {}  # courses in the same group (vertically) in the table
-    while col < sheet.ncols:
+    while col <= sheet.ncols:
         set_group_number(sheet.cell_value(2, col))
         set_term_number(sheet.cell_value(1, col))
         row = 4
@@ -455,8 +455,39 @@ def extract_table():
         write_file()
 
 
+def print_course_names():
+    courses_names = set()
+    col = 3
+    while col < sheet.ncols:
+        row = 4
+        while row < sheet.nrows:
+            left_up = sheet.cell_value(row, col)
+            right_up = sheet.cell_value(row, col + 1)
+            left_down = None
+            right_down = None
+            if row != sheet.nrows - 1:
+                left_down = sheet.cell_value(row + 1, col)
+                right_down = sheet.cell_value(row + 1, col + 1)
+            case = check_cell_case(left_up, left_down, right_up, right_down, row)
+            if case == 5:
+                row += 1
+                continue
+            if case == 4:
+                crs_name = right_up.split('-')[0]
+            else:
+                crs_name = left_up.split('-')[0]
+            courses_names.add(crs_name)
+            row += 2
+        col += 2
+    x = list(courses_names)
+    x.sort()
+    for name in x:
+        print(name)
+
+
 if __name__ == '__main__':
-    extract_table()
+    print_course_names()
+    # extract_table()
     # write_file()
     print("Information saved in the file successfully")
     print("Parsing Done")
