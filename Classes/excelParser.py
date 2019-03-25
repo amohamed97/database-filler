@@ -8,7 +8,7 @@ from Classes.SchGroup import SchGroup
 from Classes.Tutorial import Tutorial
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 tables_path = os.path.join(base_dir, 'tables_excel')
-excel_path = os.path.join(tables_path, 'CCE 8th_10th term-Spring 2019 -5-2-2019-converted.xlsx')
+excel_path = os.path.join(tables_path, 'CCE 4th&6th term-Spring 2019 -5-2-2019-converted.xlsx')
 
 
 wb = xlrd.open_workbook(excel_path)
@@ -64,7 +64,8 @@ def set_term_number(cell_text):
         term_number = 10
     elif cell_text.startswith('Hu'):
         term_number = 11
-    return
+    else:
+        return False
 
 
 def set_day(cell_text):
@@ -107,7 +108,44 @@ def set_from_to(cell_text):
     return
 
 
+# def set_name(name, names):
+#     if 'lec' in name.lower():
+#         name = name.strip('Lec')
+#         name = name.strip('lec')
+#     elif 'tut' in name.lower():
+#         name = name.strip('tut')
+#         name = name.strip('Tut')
+#     elif 'lab' in name.lower():
+#         name = name.strip('lab')
+#         name = name.strip('Lab')
+#     name = name.strip()
+#     if len(names) == 0:
+#         return name
+#     else:
+#         name = name.replace(' ', '')
+#         for crs_name in names:
+#             x = crs_name.replace(' ', '')
+#             for i in range(len(name)):
+#                 if name[i] in x:
+#             # i, j, found = 0, 0, 0
+#             # while i < len(name):
+#             #     if name[i] == x[i]:
+#             #         found += 1
+#             #         i += 1
+#             #     j += 1
+
+
 def set_course_name(name):
+    if 'lec' in name.lower():
+        name = name.strip('Lec')
+        name = name.strip('lec')
+    elif 'tut' in name.lower():
+        name = name.strip('tut')
+        name = name.strip('Tut')
+    elif 'lab' in name.lower():
+        name = name.strip('lab')
+        name = name.strip('Lab')
+    name = name.strip()
     if name.startswith("Digital LogicI") or name.startswith("Digital Logic Circuits I"):
         return "Digital Logic Circuits 1"
     elif name.startswith("Programming II"):
@@ -326,20 +364,21 @@ def extract_table():
         set_term_number(sheet.cell_value(1, col))
         row = 4
         while row < sheet.nrows:
+            last_row = True
             left_up = sheet.cell_value(row, col)
             right_up = sheet.cell_value(row, col + 1)
             left_down = None
             right_down = None
             if row != sheet.nrows - 1:
+                last_row = False
                 left_down = sheet.cell_value(row + 1, col)
                 right_down = sheet.cell_value(row + 1, col + 1)
-            case = check_cell_case(left_up, left_down, right_up, right_down, row)
             set_day(sheet.cell_value(row, 0))
-            if case == 5:
+            if left_up == '' and right_up == '':
                 row += 1
                 continue
             set_from_to(sheet.cell_value(row, 1))
-            if case == 4:
+            if check_cell_case(left_up, left_down, right_up, right_down, row) == 4:
                 course_name = right_up.split('-')[0]
             else:
                 course_name = left_up.split('-')[0]
@@ -445,9 +484,12 @@ def extract_table():
                     create_tutorial(group, place, 1, True)
                 elif 'lab' in right_up.lower():
                     create_lab(group, 1, True)
-            row += 1
-            set_day(sheet.cell_value(row, 0))
-            row += 1
+            if not last_row and sheet.cell_value(row + 1, 1) != '':
+                row += 1
+            else:
+                row += 1
+                set_day(sheet.cell_value(row, 0))
+                row += 1
         col += 2
         for group in group_courses.values():
             groups.append(group)
@@ -469,15 +511,30 @@ def print_course_names():
                 left_down = sheet.cell_value(row + 1, col)
                 right_down = sheet.cell_value(row + 1, col + 1)
             case = check_cell_case(left_up, left_down, right_up, right_down, row)
-            if case == 5:
+            if left_up == '' and right_up == '':
                 row += 1
                 continue
             if case == 4:
                 crs_name = right_up.split('-')[0]
             else:
                 crs_name = left_up.split('-')[0]
+            if 'lec' in crs_name.lower():
+                crs_name = crs_name.strip('Lec')
+                crs_name = crs_name.strip('lec')
+            elif 'tut' in crs_name.lower():
+                crs_name = crs_name.strip('tut')
+                crs_name = crs_name.strip('Tut')
+            elif 'lab' in crs_name.lower():
+                crs_name = crs_name.strip('lab')
+                crs_name = crs_name.strip('Lab')
+            crs_name = crs_name.strip()
+            crs_name = crs_name.strip('I')
+            crs_name = crs_name.strip()
             courses_names.add(crs_name)
-            row += 2
+            if row != sheet.nrows - 1 and sheet.cell_value(row + 1, 1) != '':
+                row += 1
+            else:
+                row += 2
         col += 2
     x = list(courses_names)
     x.sort()
@@ -489,5 +546,5 @@ if __name__ == '__main__':
     print_course_names()
     # extract_table()
     # write_file()
-    print("Information saved in the file successfully")
-    print("Parsing Done")
+    # print("Information saved in the file successfully")
+    # print("Parsing Done")
